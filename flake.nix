@@ -5,11 +5,17 @@
     pkgs = import nixpkgs { system = "x86_64-linux"; };
     nix2containerPkgs = nix2container.packages.x86_64-linux;
   in {
-    packages.x86_64-linux.buildCommandName= nix2containerPkgs.nix2container.buildImage {
+    packages.x86_64-linux.buildCommandName = nix2containerPkgs.nix2container.buildImage {
       name = "imageName";
       tag = "tagName";
+
+      # Add packages to image
+      copyToRoot = [
+        pkgs.coreutils
+      ];
+
       config = {
-        entrypoint = ["${pkgs.coreutils}/bin/ls" "-l"];
+        entrypoint = ["${pkgs.bash}/bin/bash"];
       };
     };
   };
