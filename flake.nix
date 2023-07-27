@@ -5,9 +5,9 @@
     pkgs = import nixpkgs { system = "x86_64-linux"; };
     nix2containerPkgs = nix2container.packages.x86_64-linux;
   in {
-    packages.x86_64-linux.hello = nix2containerPkgs.nix2container.buildImage {
-      name = "ls";
-      tag = "dev";
+    packages.x86_64-linux.buildCommandName= nix2containerPkgs.nix2container.buildImage {
+      name = "imageName";
+      tag = "tagName";
       config = {
         entrypoint = ["${pkgs.coreutils}/bin/ls" "-l"];
       };
