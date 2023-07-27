@@ -6,9 +6,9 @@
     nix2containerPkgs = nix2container.packages.x86_64-linux;
   in {
     packages.x86_64-linux.hello = nix2containerPkgs.nix2container.buildImage {
-      name = "hello";
+      name = "ls";
       config = {
-        entrypoint = ["${pkgs.hello}/bin/hello"];
+        entrypoint = ["${pkgs.coreutils}/bin/ls"];
       };
     };
   };
