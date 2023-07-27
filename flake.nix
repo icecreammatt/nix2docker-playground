@@ -8,7 +8,7 @@
     packages.x86_64-linux.hello = nix2containerPkgs.nix2container.buildImage {
       name = "ls";
       config = {
-        entrypoint = ["${pkgs.coreutils}/bin/ls"];
+        entrypoint = ["${pkgs.coreutils}/bin/ls" "-l"];
       };
     };
   };
